@@ -4,6 +4,7 @@ const board = []
 function play(clickedId) {
    const playerSpan = document.getElementById('player')
    const clickedElement = document.getElementById(clickedId)
+   
 
    if (playerSpan.innerText === 'X') {
        playerSpan.innerText = 'O'
@@ -24,36 +25,57 @@ function play(clickedId) {
    let bottomCenter = board[7]
    let bottomRight = board[8]
 
+   let winner = false
+
    if (topLeft !== undefined && topLeft === topCenter && topLeft === topRight) {
-       alert(`Player ${topLeft} wins!`)}
+       alert(`Player ${topLeft} wins!`)
+    winner = true}
     
 
     if (middleLeft !== undefined && middleLeft === middleCenter && middleLeft === middleRight) {
     alert(`Player ${middleLeft} wins!`)
-    }
+    winner = true}
 
    if (bottomLeft !== undefined && bottomLeft === bottomCenter && bottomLeft === bottomRight) {
     alert(`Player ${bottomLeft} wins!`)
-   }
+    winner = true}
 
    if (topLeft !== undefined && topLeft === middleLeft && topLeft === bottomLeft) {
     alert(`Player ${topLeft} wins!`)
-   }
+    winner = true}
 
    if (topCenter !== undefined && topCenter === middleCenter && topCenter === bottomCenter) {
     alert(`Player ${topCenter} wins!`)
-   }
+    winner = true}
 
    if (topRight !== undefined && topRight === middleRight && topRight === bottomRight) {
     alert(`Player ${topRight} wins!`)
-   }
+    winner = true}
 
    if (topLeft !== undefined && topLeft === middleCenter && topLeft === bottomRight) {
     alert(`Player ${topLeft} wins!`)
-   }
+    winner = true }
 
    if (topRight !== undefined && topRight === middleCenter && topRight === bottomLeft) {
     alert(`Player ${topRight} wins!`)
+    winner = true}
+
+   let boardFull = false
+   for (let i = 0; i < 9; i++) {
+    console.log(board[i])
+    if (board[i] !== undefined) {
+        boardFull = true
+       } else if (board[i] === undefined) {
+           boardFull = false
+       }
    }
+   console.log(boardFull)
+
+   if (boardFull === true && winner === false) {
+    alert(`Cat's Game`)
+   }
+   
+
+  
 
    }
